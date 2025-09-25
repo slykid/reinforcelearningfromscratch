@@ -19,3 +19,8 @@
 |11월 2주(11.10-11.16) | ch8 |  이혜원 |
 |11월 3주(11.17-11.23) | ch9 | 김건 |
 |11월 4주(11.24-11.30) | ch10 |  이남준 |
+
+## GitHub 웹(GUI)로 올리는 빠른 방법
+- 레포 페이지 → **Add file > Create new file**
+- 파일명 입력칸에 `Chapter/ch2.md` 입력
+- 내용 작성 후, `Create a new branch for this commit` 선택 → **Propose changes** → PR 생성
