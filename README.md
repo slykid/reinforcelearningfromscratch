@@ -22,5 +22,5 @@
 
 ## GitHub 웹(GUI)로 올리는 빠른 방법
 - 레포 페이지 → **Add file > Create new file**
-- 파일명 입력칸에 `Chapter/ch2.md` 입력
+- 파일명 입력칸에 `ch2.md` 입력
 - 내용 작성 후, `Create a new branch for this commit` 선택 → **Propose changes** → PR 생성
