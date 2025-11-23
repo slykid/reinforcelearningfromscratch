@@ -93,11 +93,11 @@ $$\nabla_\theta J(\theta) = \mathbb{E}_\pi[\nabla_\theta \log \pi_\theta(a|s) \c
 
 **증명**:
 
-$$\begin{align}
-\mathbb{E}_\pi[\nabla_\theta \log \pi_\theta(a|s) \cdot b(s)] &= \sum_a \pi_\theta(a|s) \cdot \nabla_\theta \log \pi_\theta(a|s) \cdot b(s) \\
-&= b(s) \cdot \nabla_\theta[\sum_a \pi_\theta(a|s)] \\
-&= b(s) \cdot \nabla_\theta(1) = 0
-\end{align}$$
+$$\mathbb{E}_\pi[\nabla_\theta \log \pi_\theta(a|s) \cdot b(s)] = \sum_a \pi_\theta(a|s) \cdot \nabla_\theta \log \pi_\theta(a|s) \cdot b(s)$$
+
+$$= b(s) \cdot \nabla_\theta[\sum_a \pi_\theta(a|s)]$$
+
+$$= b(s) \cdot \nabla_\theta(1) = 0$$
 
 ### 최적 베이스라인
 
@@ -191,10 +191,11 @@ Actor-Critic
    $$\theta \leftarrow \theta + \alpha \cdot (G_t - b(s_t)) \cdot \nabla_\theta \log \pi_\theta(a_t|s_t)$$
 
 4. **Actor-Critic**:
-   $$\begin{align}
-   \delta_t &= r_t + \gamma V_w(s_{t+1}) - V_w(s_t) \\
-   w &\leftarrow w + \alpha_w \cdot \delta_t \cdot \nabla_w V_w(s_t) \\
-   \theta &\leftarrow \theta + \alpha_\theta \cdot \delta_t \cdot \nabla_\theta \log \pi_\theta(a_t|s_t)
-   \end{align}$$
+
+   $$\delta_t = r_t + \gamma V_w(s_{t+1}) - V_w(s_t)$$
+
+   $$w \leftarrow w + \alpha_w \cdot \delta_t \cdot \nabla_w V_w(s_t)$$
+
+   $$\theta \leftarrow \theta + \alpha_\theta \cdot \delta_t \cdot \nabla_\theta \log \pi_\theta(a_t|s_t)$$
 
 ---
