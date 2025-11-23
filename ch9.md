@@ -41,22 +41,16 @@ $$J(\theta) = \mathbb{E}[G(\tau)]$$
 
 $$\theta \leftarrow \theta + \alpha \cdot \nabla_\theta J(\theta)$$
 
-### 로그 기울기 트릭 (Log-Gradient Trick)
-
-환경 동역학을 모르더라도 기울기 계산 가능:
-
-$$\nabla_\theta \log \pi_\theta(a|s)$$
-
 ### 가장 간단한 정책경사법
 
-전체 궤적의 누적 보상 $G_0$을 모든 시점에 사용:
+전체 궤적의 누적 보상 $G(\tau)$를 모든 시점에 사용:
 
-$$\nabla_\theta J(\theta) = \sum_{t=0}^{T} G_0 \cdot \nabla_\theta \log \pi_\theta(a_t|s_t)$$
+$$\nabla_\theta J(\theta) = \sum_{t=0}^{T} G(\tau) \cdot \nabla_\theta \log \pi_\theta(a_t|s_t)$$
 
-여기서 $G_0 = \sum_{t=0}^{T} r_t$는 전체 에피소드의 총 보상
+여기서 $G(\tau) = R_0 + \gamma R_1 + \gamma^2 R_2 + \cdots + \gamma^T R_T$
 
 **문제점**:
-- 모든 시점에 동일한 가중치 사용
+- 모든 시점에 동일한 가중치 $G(\tau)$ 사용
 - 과거의 보상까지 현재 행동 평가에 포함 → 분산 증가
 
 ---
@@ -188,7 +182,7 @@ Actor-Critic
 ### 각 방법의 업데이트 수식 비교
 
 1. **가장 간단한 정책경사법**:
-   $$\theta \leftarrow \theta + \alpha \cdot G_0 \cdot \nabla_\theta \log \pi_\theta(a_t|s_t)$$
+   $$\theta \leftarrow \theta + \alpha \cdot G(\tau) \cdot \nabla_\theta \log \pi_\theta(a_t|s_t)$$
 
 2. **REINFORCE**:
    $$\theta \leftarrow \theta + \alpha \cdot G_t \cdot \nabla_\theta \log \pi_\theta(a_t|s_t)$$
@@ -204,5 +198,3 @@ Actor-Critic
    \end{align}$$
 
 ---
-
-**참고**: 이 자료는 『밑바닥부터 시작하는 딥러닝 4 - 강화학습편』 Chapter 9의 핵심 내용을 정리한 것입니다.
